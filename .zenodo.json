@@ -1,0 +1,22 @@
+{
+    "description": "{Description goes here}.", 
+    "title": "Robert's Farm of Ideas: {running-number-of-idea} -- {running-title-of-idea}", 
+    "license": {
+        "id": "CC-BY-4.0"
+    }, 
+    "notes": "Development is happening here: https://github.com/roberts-farm-of-ideas/{running-number-of-idea}", 
+    "keywords": [
+        "{keyword1}",
+        "{keyword2}"
+    ],
+    "creators": [
+    {
+        "affiliation": "",
+        "name": "Giessmann, Robert T.",
+        "orcid": "0000-0002-0254-1500"
+    }
+    ],
+    "access_right": "open", 
+    "upload_type": "publication",
+    "publication_type": "workingpaper"
+}
