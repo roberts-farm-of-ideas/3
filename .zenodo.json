@@ -1,13 +1,21 @@
 {
-    "description": "{Description goes here}.", 
-    "title": "Robert's Farm of Ideas: {running-number-of-idea} -- {running-title-of-idea}", 
+    "description": "Finding thermodynamic cycles in the metabolism .", 
+    "title": "Robert's Farm of Ideas: 3 -- thermodynamic cycles of metabolism", 
     "license": {
         "id": "CC-BY-4.0"
     }, 
-    "notes": "Development is happening here: https://github.com/roberts-farm-of-ideas/{running-number-of-idea}", 
+    "notes": "Development is happening here: https://github.com/roberts-farm-of-ideas/3", 
     "keywords": [
-        "{keyword1}",
-        "{keyword2}"
+        "metabolism",
+        "metabolic network",
+        "metabolic pathways",
+        "biochemical pathways",
+        "thermodynamics",
+        "thermodynamic cycle",
+        "graph",
+        "linear dependent",
+        "chemical reaction network",
+        "row echelon form"
     ],
     "creators": [
     {
