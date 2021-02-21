@@ -6,6 +6,11 @@
 ## This idea in {number-of-characters} characters
 Finding thermodynamic cycles in the metabolism is great. You can check experimental results with it. You can do it by looking for linear-dependent rows/columns in the chemical reaction network.
 
+## Sounds great, but...
+You are interested in this topic? But the idea is gibberish and incomplete, or non-sense? Well, you're probably right! 
+
+All of this is work in progress -- I would be very happy if you get in touch so we can improve this!
+
 ## How to Use
 You are free to use this idea in whatever way you like. I put this material under CC-BY license, just to make it legally clear, but: "Gedanken sind frei" (ideas are free) -- I don't expect them to be protectable anyway.
 
