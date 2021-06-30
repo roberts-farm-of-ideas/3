@@ -111,7 +111,7 @@ if False:
 
 ## template:
 if False:
-    ## name / description of test
+    ## figure x) name / description of test
     ##
     ## indicate reactions:
     #  rxn0 : A = B
@@ -119,276 +119,353 @@ if False:
     #  rxn...
     ##
     ## indicate designed cycles:
-    #  0 = rxn0 + rxn1 - rxn2
+    #  cycle I:  0 = rxn0 + rxn1 - rxn2  == A-B-C-A
+    #  cycle II: ...
+    ##
+    ## indicate known solutions describing the whole figure:
+    #  solution s1: cycle I + cycle II
     ##
     #  comments if needed
     ##
     stoich_matrix = np.array(
-    [                                         ## mol_...
-    # rxn_... --->                            ##     |
-    # rxn_0   1   2   3   4   5   6   7   8   ##
-        [+1, 00, 00, 00, 00, 00, 00, 00, 00], ## mol_A
-        [-1, 00, 00, 00, 00, 00, 00, 00, 00], ##    _B
-        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##    _C
-        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##    _D
-        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##    _E
-        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##    _F
-        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##    _G
-        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##    _H
-        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##    _I
-        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##    _J
-        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##    _K
-        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##    _L
+    [                                         ## mol ...
+    # rxn ... --->                            ##     |
+    # rxn 0   1   2   3   4   5   6   7   8   ##
+        [-1, 00, 00, 00, 00, 00, 00, 00, 00], ## mol A
+        [+1, 00, 00, 00, 00, 00, 00, 00, 00], ##     B
+        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##     C
+        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##     D
+        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##     E
+        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##     F
+        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##     G
+        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##     H
+        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##     I
+        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##     J
+        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##     K
+        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##     L
     ])
 
 ## one-substrate one-product scenarios:
 
 if False:
-    ## minimal trivial cycle of length 3
+    ## figure a) minimal trivial cycle of length 3
     ##
     #  rxn0 : A = B
-    #  rxn1 : B = C
-    #  rxn2 : A = C
+    #  rxn1 : A = C
+    #  rxn2 : B = C
     ##
-    #  0 = rxn0 + rxn1 - rxn2
+    #  cycle I: 0 = rxn0 + rxn2 - rxn1  == A-B-C-A
     ##
-    #  the cycle is A-B-C-A
-    #
     stoich_matrix = np.array(
-    [                 ## mol_...
-    # rxn_... --->    ##     |
-    # rxn_0   1   2   ##     |
-        [+1, 00 ,+1], ## mol_A
-        [-1, +1, 00], ##    _B
-        [00, -1, -1], ##    _C
+    [                 ## mol ...
+    # rxn ... --->    ##     |
+    # rxn 0   1   2   ##     |
+        [-1, -1 ,00], ## mol A
+        [+1, 00, -1], ##     B
+        [00, +1, +1], ##     C
     ])
 
 
 if False:
-    ## minimal trivial cycle of length 3 + linear path away
+    ## figure b) minimal trivial cycle of length 3 + linear path away
     ##
     #  rxn0 : A = B
-    #  rxn1 : B = C
-    #  rxn2 : A = C
+    #  rxn1 : A = C
+    #  rxn2 : B = C
     #  rxn3 : C = D
     #  rxn4 : D = E
     ##
-    #  0 = rxn0 + rxn1 - rxn2
+    #  cycle I: 0 = rxn0 + rxn2 - rxn1  == A-B-C-A
     ##
-    #  the cycle is A-B-C-A
-    #
     stoich_matrix = np.array(
-    [                         ## mol_...
-    # rxn_... --->            ##     |
-    # rxn_0   1   2,  3   4   ##     |
-        [+1, 00 ,+1, 00, 00], ## mol_A
-        [-1, +1, 00, 00, 00], ##    _B
-        [00, -1, -1, +1, 00], ##    _C
-        [00, 00, 00, -1, +1], ##    _D
-        [00, 00, 00, 00, -1], ##    _E
-        [00, 00, 00, 00, 00], ##    _F
+    [                         ## mol ...
+    # rxn ... --->            ##     |
+    # rxn 0   1   2,  3   4   ##     |
+        [-1, -1 ,00, 00, 00], ## mol A
+        [+1, 00, -1, 00, 00], ##     B
+        [00, +1, +1, -1, 00], ##     C
+        [00, 00, 00, +1, -1], ##     D
+        [00, 00, 00, 00, +1], ##     E
     ])
 
 
 if False:
-    ## two minimal trivial cycles of length 3 without shared edge
+    ## figure c) two minimal trivial cycles of length 3 without shared edge
     ##
     #  rxn0 : A = B
-    #  rxn1 : B = C
-    #  rxn2 : A = C
+    #  rxn1 : A = C
+    #  rxn2 : B = C
     #  rxn3 : D = E
-    #  rxn4 : E = F
-    #  rxn5 : D = F
+    #  rxn4 : D = F
+    #  rxn5 : E = F
     ##
-    #  0 = rxn0 + rxn1 - rxn2
-    #  0 = rxn3 + rxn4 - rxn5
+    #  cycle I:  0 = rxn0 + rxn2 - rxn1   == A-B-C-A 
+    #  cycle II: 0 = rxn3 + rxn5 - rxn4   == D-E-F-D
     ##
-    #  the cycles are: A-B-C-A and D-E-F-D
+    #  solution s1: cycle I + cycle II
     ##
     stoich_matrix = np.array(
-    [                             ## mol_...
-    # rxn_... --->                ##     |
-    # rxn_0   1   2,  3   4,  5   ##     |
-        [+1, 00 ,+1, 00, 00, 00], ## mol_A
-        [-1, +1, 00, 00, 00, 00], ##    _B
-        [00, -1, -1, 00, 00, 00], ##    _C
-        [00, 00, 00, +1, 00, +1], ##    _D
-        [00, 00, 00, -1, +1, 00], ##    _E
-        [00, 00, 00, 00, -1, -1], ##    _F
+    [                             ## mol ...
+    # rxn ... --->                ##     |
+    # rxn 0   1   2,  3   4,  5   ##     |
+        [-1, -1 ,00, 00, 00, 00], ## mol A
+        [+1, 00, -1, 00, 00, 00], ##     B
+        [00, +1, +1, 00, 00, 00], ##     C
+        [00, 00, 00, -1, -1, 00], ##     D
+        [00, 00, 00, +1, 00, -1], ##     E
+        [00, 00, 00, 00, +1, +1], ##     F
     ])
 
 
 if False:
-    ## two minimal trivial cycles of length 3 with one shared edge
+    ## figure d) two minimal trivial cycles of length 3 with one shared edge
     ##
     # rxn0 : A = B
-    # rxn1 : B = C
-    # rxn2 : A = C
-    # rxn3 : C = D
-    # rxn4 : B = D
+    # rxn1 : A = C
+    # rxn2 : B = C
+    # rxn3 : B = D
+    # rxn4 : C = D
     ##
-    # 0 = rxn0 + rxn1 - rxn2
-    # 0 = rxn1 + rxn3 - rxn4
+    # cycle I:  0 = rxn0 + rxn2 - rxn1   == A-B-C-A
+    # cycle II: 0 = rxn2 + rxn4 - rxn3   == B-C-D-B
     ##
-    #
-    #  the cycles are:      A-B-C-A and D-B-C-D ,
-    #  the shared edge is:    B-C
+    # solution s1: cycle I + cycle II
+    ##
+    # the solution s1 involves an edge that appears twice, in each cycle.
+    # There are more complex solutions, but those are clearly inferior, e.g.:
+    # cycle III: 0 = rxn0 + rxn3 - rxn4 - rxn1  == A-B-C-D-A
+    # solution s2: cycle I + cycle III
+    # This solution would have two edges shared between its cycles (whereas
+    # solution s1 has only one edge shared between its two cycles), and 
+    # cycle III has length 4 instead of the cycles of length 3 from solution s1.
     ##
     stoich_matrix = np.array(
-    [                         ## mol_...
-    # rxn_... --->            ##     |
-    # rxn_0   1   2,  3   4   ##     |
-        [+1, 00 ,+1, 00, 00], ## mol_A
-        [-1, +1, 00, 00, +1], ##    _B
-        [00, -1, -1, +1, 00], ##    _C
-        [00, 00, 00, -1, -1], ##    _D
+    [                         ## mol ...
+    # rxn ... --->            ##     |
+    # rxn 0   1   2,  3   4   ##     |
+        [-1, -1 ,00, 00, 00], ## mol A
+        [+1, 00, -1, -1, 00], ##     B
+        [00, +1, +1, 00, -1], ##     C
+        [00, 00, 00, +1, +1], ##     D
     ])
 
 
-
-## decision problems: which node to choose?
-
 if False:
-    ## two cycles of length 4 each, which 3 shared nodes
-    ## -- the remaining two nodes close the cycles equally well
+    ## figure e) multiple distinct equally-well solutions: two cycles of length 4 each
     ##
     #  rxn0 : A = B
-    #  rxn1 : B = C
-    #  rxn2 : C = D
-    #  rxn3 : A = D
-    #  rxn4 : B = E
+    #  rxn1 : A = D
+    #  rxn2 : B = C
+    #  rxn3 : B = E
+    #  rxn4 : C = D
     #  rxn5 : D = E
     ##
-    ## indicate designed cycles:
-    #  0 = rxn0 + rxn1 + rxn2 - rxn3
-    #  0 = rxn0 + rxn4 - rxn5 - rxn3
+    #  cycle I:   0 = rxn0 + rxn2 + rxn4 - rxn1  == A-B-C-D-A
+    #  cycle II:  0 = rxn0 + rxn3 - rxn5 - rxn1  == A-B-E-D-A
+    #  cycle III: 0 = rxn2 + rxn4 + rxn5 - rxn3  == B-C-D-E-B
     ##
-    #  the cycles are: A-B-C-D-A and A-B-E-D-A
-    #  Both paths are equivalent, there is no difference in whether to choose
-    #  C or E as the bridge.
+    #  solution s1: cycle I  + cycle II
+    #  solution s2: cycle I  + cycle III
+    #  solution s3: cycle II + cycle III
     ##
-    stoich_matrix = np.array(
-    [                             ## mol_...
-    # rxn_... --->                ##     |
-    # rxn_0   1   2   3   4   5   ##
-        [+1, 00, 00, +1, 00, 00], ## mol_A
-        [-1, +1, 00, 00, +1, 00], ##    _B
-        [00, -1, +1, 00, 00, 00], ##    _C
-        [00, 00, -1, -1, 00, +1], ##    _D
-        [00, 00, 00, 00, -1, -1], ##    _E
-    ])
-
-
-
-
-## decision problems: which edges to choose?
-
-if False:
-    ## three cycles of length 3, with only one unique edge each -- after closing
-    ## two cycles, the third can be constructed in two ways
-    ##
-    #  rxn0 : A = B
-    #  rxn1 : B = C
-    #  rxn2 : C = D
-    #  rxn3 : A = D
-    #  rxn4 : A = C
-    #  rxn5 : B = D
-    ##
-    ## indicate designed cycles:
-    #  0 = rxn0 - rxn3 + rxn5    == A-B-D-A
-    #  0 = rxn1 + rxn2 - rxn5    == B-C-D-B
-    #  0 =-rxn2 + rxn3 - rxn4    == C-A-D-C
-    ##
-    #  a further cycle is: A-B-C-A.
-    #  After constructing, e.g. A-B-D-A and B-C-D-B, is it equally well to
-    #  construct C-A-D-C or A-B-C-A? Both include the final missing edge (A-C),
-    #  but they choose different nodes / edges again. in the C-A-D-C case,
-    #  the node D is present in three cycles, whereas in the A-B-C-A case,
-    #  the edges A-B and B-C are part of two cycles each.
+    #  When starting with the path D-A-B, there is no difference 
+    #  in whether to choose C or E as the "bridge" to close the cycle.
+    #  One can then describe the figure by chosing two cycles, each with a 
+    #  different bridge (solution s1: cycle I + cycle II).
+    #  But: one can also construct cycle III. 
+    #  Is it equally well to use solution s2: cycle I + cycle III, or
+    #  solution s3: cycle II + cycle III?
+    #  All solutions have two edges which are present in two 
+    #  cycles; there is no "measurable" difference between them.
     ##
     stoich_matrix = np.array(
-    [                             ## mol_...
-    # rxn_... --->                ##     |
-    # rxn_0   1   2   3   4   5   ##
-        [+1, 00, 00, +1, +1, 00], ## mol_A
-        [-1, +1, 00, 00, 00, +1], ##    _B
-        [00, -1, +1, 00, -1, 00], ##    _C
-        [00, 00, -1, -1, 00, -1], ##    _D
-    ])
-
-
-## decision problems: what is the optimal solution -- more paths, or smaller ones?
-
-if False:
-    ## two cycles of length 4, 3 == three cycles of length 3, 3, 3
-    ##
-    #  rxn0 : A = B
-    #  rxn1 : B = C
-    #  rxn2 : C = D
-    #  rxn3 : A = D
-    #  rxn4 : A = C
-    #  rxn5 : A = E
-    #  rxn6 : C = E
-    ##
-    ## indicate designed cycles:
-    #  0 = rxn0 + rxn1 + rxn2 - rxn3
-    #  0 = rxn4 - rxn5 + rxn6
-    #  0 = rxn0 - rxn1 - rxn4
-    #  0 = rxn2 - rxn3 + rxn4
-    ##
-    #  the cycles are: A-B-C-D-A and A-C-E-A; or:
-    #  could also be: A-B-C-A, A-C-D-A, A-C-E-A.
-    #  In both, A-C-E-A is a shared cycle.
-    #  Is it now better to duplicate an edge (A-C) to get smaller solutions,
-    #  or is it better to have a larger solution (cycle of length 4)?
-    ##
-    stoich_matrix = np.array(
-    [                                 ## mol_...
-    # rxn_... --->                    ##     |
-    # rxn_0   1   2   3   4   5   6   ##
-        [+1, 00, 00, +1, +1, +1, 00], ## mol_A
-        [-1, +1, 00, 00, 00, 00, 00], ##    _B
-        [00, -1, +1, 00, -1, 00, +1], ##    _C
-        [00, 00, -1, -1, 00, 00, 00], ##    _D
-        [00, 00, 00, 00, 00, -1, -1], ##    _E
+    [                             ## mol ...
+    # rxn ... --->                ##     |
+    # rxn 0   1   2   3   4   5   ##
+        [-1, -1, 00, 00, 00, 00], ## mol A
+        [+1, 00, -1, -1, 00, 00], ##     B
+        [00, 00, +1, 00, -1, 00], ##     C
+        [00, +1, 00, 00, +1, -1], ##     D
+        [00, 00, 00, +1, 00, +1], ##     E
     ])
 
 
 if True:
-    ## two cycles of length 5, 4 == three cycles of length 4, 4, 3
+    ## figure f) multiple distinct equally-well solutions: three cycles of length 3 each
     ##
-    ## indicate reactions:
     #  rxn0 : A = B
-    #  rxn1 : B = C
-    #  rxn2 : C = D
-    #  rxn3 : D = E
-    #  rxn4 : E = F
-    #  rxn5 : A = F
-    #  rxn6 : B = G
-    #  rxn7 : B = E
-    #  rxn8 : E = G
+    #  rxn1 : A = C
+    #  rxn2 : A = D
+    #  rxn3 : B = C
+    #  rxn4 : B = D
+    #  rxn5 : C = D
     ##
-    ## indicate designed cycles:
-    #  0 = rxn0 + rxn6 - rxn8 + rxn4 + rxn5     == A-B-G-E-F-A
-    #  0 = rxn1 + rxn2 + rxn3 - rxn7            == B-C-D-E-B
+    #  cycle I:   0 = rxn0 + rxn3 - rxn1    == A-B-C-A
+    #  cycle II:  0 = rxn3 + rxn5 - rxn4    == B-C-D-B
+    #  cycle III: 0 = rxn2 - rxn5 - rxn1    == A-D-C-A
+    #  cycle IV:  0 = rxn0 + rxn4 - rxn2    == A-B-D-A
     ##
-    #  possible cycles are also: B-E-G-B and A-B-E-F-A. This allows to construct
-    #  e.g. (A-B-E-F-A, B-C-D-E-B, B-E-G-B) as another set of cycles of
-    #  lengths (4,4,3).
+    #  solution s1: cycle I  + cycle II  + cycle III
+    #  solution s2: cycle I  + cycle II  + cycle IV
+    #  solution s3: cycle I  + cycle III + cycle IV
+    #  solution s4: cycle II + cycle III + cycle IV
+    ##
+    #  After constructing, e.g. cycle I and cycle II, is it equally well to
+    #  construct cycle III or cycle IV? Both include the final missing edge (rxn2),
+    #  but they choose different nodes / edges, compared to
+    #  the already existing cycles. Illustrating the problem explicitly:
+    #  If having chosen cycle I and cycle II already,
+    #  and chosing now: 1) cycle III, the node C is present in three cycles,
+    #  and the edges rxn1, rxn3, and rxn5 are present in two cycles each;
+    #  whereas when chosing now: 2) cycle IV, the node B is present in 
+    #  three cycles, and the edges rxn0, rxn3, and rxn4
+    #  are present in two cycles each.
+    #  The solutions describe the figure equally well, but are distinct.
+    #
+    #  |-------------------------------------------------------------------------------------------------------------------------------------|
+    #  |            | number of |   length of   | total edges | total nodes | unique edges | unique nodes |     edges in    |    nodes in     | 
+    #  | solution # |   cycles  | longest cycle | in solution | in solution | in solution  | in solution  | multiple cycles | multiple cycles | 
+    #  |------------|-----------|---------------|-------------|-------------|--------------|--------------|-----------------|-----------------|
+    #  |     s1     |     3     |      3        |      9      |      9      |      6       |      4       |      3 in 2     | 1 in 3, 3 in 2  |
+    #  |------------|-----------|---------------|-------------|-------------|--------------|--------------|-----------------|-----------------|
+    #  |     s2     |     3     |      3        |      9      |      9      |      6       |      4       |      3 in 2     | 1 in 3, 3 in 2  |
+    #  |------------|-----------|---------------|-------------|-------------|--------------|--------------|-----------------|-----------------|
+    #  |     s3     |     3     |      3        |      9      |      9      |      6       |      4       |      3 in 2     | 1 in 3, 3 in 2  |
+    #  |------------|-----------|---------------|-------------|-------------|--------------|--------------|-----------------|-----------------|
+    #  |     s4     |     3     |      3        |      9      |      9      |      6       |      4       |      3 in 2     | 1 in 3, 3 in 2  |
+    #  |--------------------------------------------------------------------------------------------------------------------------------------|
+    #
     ##
     stoich_matrix = np.array(
-    [                                         ## mol_...
-    # rxn_... --->                            ##     |
-    # rxn_0   1   2   3   4   5   6   7   8   ##
-        [+1, 00, 00, 00, 00, +1, 00, 00, 00], ## mol_A
-        [-1, +1, 00, 00, 00, 00, +1, +1, 00], ##    _B
-        [00, -1, +1, 00, 00, 00, 00, 00, 00], ##    _C
-        [00, 00, -1, +1, 00, 00, 00, 00, 00], ##    _D
-        [00, 00, 00, -1, +1, 00, 00, -1, +1], ##    _E
-        [00, 00, 00, 00, -1, -1, 00, 00, 00], ##    _F
-        [00, 00, 00, 00, 00, 00, -1, 00, -1], ##    _G
+    [                             ## mol ...
+    # rxn ... --->                ##     |
+    # rxn 0   1   2   3   4   5   ##
+        [-1, -1, -1, 00, 00, 00], ## mol A
+        [+1, 00, 00, -1, -1, 00], ##     B
+        [00, +1, 00, +1, 00, -1], ##     C
+        [00, 00, +1, 00, +1, +1], ##     D
     ])
 
+
+if False:
+    ## figure g) trade-off between objectives: two cycles of length 4, 3; or three cycles of length 3, 3, 3?
+    ##
+    #  rxn0 : A = B
+    #  rxn1 : A = C
+    #  rxn2 : A = D
+    #  rxn3 : A = E
+    #  rxn4 : B = C
+    #  rxn5 : C = D
+    #  rxn6 : C = E
+    ##
+    #  cycle I:   0 = rxn0 + rxn4 + rxn5 - rxn2     == A-B-C-D-A
+    #  cycle II:  0 = rxn1 + rxn6 - rxn3            == A-C-E-A
+    #  cycle III: 0 = rxn0 + rxn4 - rxn1            == A-B-C-A
+    #  cycle IV:  0 = rxn1 + rxn5 - rxn2            == A-C-D-A
+    #  cycle V:   0 = rxn0 + rxn4 - rxn6 - rxn3     == A-B-C-E-A
+    #  cycle VI:  0 = rxn2 - rxn5 - rxn4 - rxn0     == A-D-C-E-A
+    ##
+    #  solution s1: cycle I   + cycle II
+    #  solution s2: cycle II  + cycle III + cycle IV
+    #  solution s3: cycle IV  + cycle V
+    #  solution s4: cycle III + cycle VI
+    ##
+    #  A complete description of the figure can be achieved e.g. with
+    #  solution s1, which is distinct from solution s2. Depending on the
+    #  objectives one sets, one solution is better than the other, although
+    #  both describe the figure completely.
+    #  solution s1 contains only two cycles, but one has length 4;
+    #  two nodes (A and C) are present in two cycles.
+    #  solution s2 contains three cycles of length 3 each;
+    #  two nodes (A and C) are present in all three cycles; also
+    #  one edge (rxn1) is present in two cycles, whereas solution s1 does
+    #  not contain any edge present in multiple cycles.
+    #  solution s3 and solution s4 are similar to solution s1, but this is
+    #  a "multiple distinct equally-well solutions" problem not to be 
+    #  considered here. The question really is: Which solution is "better",
+    #  solution s1 or solution s2?
+    #
+    #  |--------------------------------------------------------------------------------------------------------------------------------------|
+    #  |            | number of |   length of   | total edges | total nodes | unique edges | unique nodes |     edges in    |    nodes in     | 
+    #  | solution # |   cycles  | longest cycle | in solution | in solution | in solution  | in solution  | multiple cycles | multiple cycles | 
+    #  |------------|-----------|---------------|-------------|-------------|--------------|--------------|-----------------|-----------------|
+    #  |     s1     |     2     |      4        |      7      |      7      |      7       |      5       |        0        |     2 in 2      |
+    #  |------------|-----------|---------------|-------------|-------------|--------------|--------------|-----------------|-----------------|
+    #  |     s2     |     3     |      3        |      9      |      9      |      7       |      5       |      1 in 3     |     2 in 3      |
+    #  |------------|-----------|---------------|-------------|-------------|--------------|--------------|-----------------|-----------------|
+    #  |     s3     |     3     |      3        |      9      |      9      |      7       |      5       |      1 in 3     |     2 in 3      |
+    #  |------------|-----------|---------------|-------------|-------------|--------------|--------------|-----------------|-----------------|
+    #  |     s4     |     3     |      3        |      9      |      9      |      7       |      5       |      1 in 3     |     2 in 3      |
+    #  |--------------------------------------------------------------------------------------------------------------------------------------|
+    #
+    ##
+    stoich_matrix = np.array(
+    [                                 ## mol ...
+    # rxn ... --->                    ##     |
+    # rxn 0   1   2   3   4   5   6   ##
+        [-1, -1, -1, -1, 00, 00, 00], ## mol A
+        [+1, 00, 00, 00, -1, 00, 00], ##     B
+        [00, +1, 00, 00, +1, -1, -1], ##     C
+        [00, 00, +1, 00, 00, +1, 00], ##     D
+        [00, 00, 00, +1, 00, 00, +1], ##     E
+    ])
+
+
+if False:
+    ## figure h) trade-off between objectives: two cycles of length 5, 4; or three cycles of length 4, 4, 3?
+    ##
+    #  rxn0 : A = B
+    #  rxn1 : A = F
+    #  rxn2 : B = C
+    #  rxn3 : B = E
+    #  rxn4 : B = G
+    #  rxn5 : C = D
+    #  rxn6 : D = E
+    #  rxn7 : E = F
+    #  rxn8 : E = G
+    ##
+    #  cycle I:   0 = rxn0 + rxn4 - rxn8 + rxn7 - rxn1          == A-B-G-E-F-A
+    #  cycle II:  0 = rxn2 + rxn5 + rxn6 - rxn3                 == B-C-D-E-B
+    #  cycle III: 0 = rxn0 + rxn3 + rxn7 - rxn1                 == A-B-E-F-A
+    #  cycle IV:  0 = rxn4 - rxn8 - rxn3                        == B-G-E-B
+    #  cycle V:   0 = rxn0 + rxn2 + rxn5 + rxn6 + rxn7 - rxn1   == A-B-C-D-E-F-A
+    ##
+    #  solution s1: cycle I  + cycle II 
+    #  solution s2: cycle II + cycle III + cycle IV
+    #  solution s3: cycle IV + cycle V
+    ##
+    #  Here, solution s1 has actually a bigger length of longest cycle compared to
+    #  solution s2 (5 vs 4), still it has a smaller number of cycles and even a smaller 
+    #  number of total edges (and nodes) in the solution.
+    #  Solution s3 is strange in that most numbers are optimal except for the length
+    #  of the longest cycle.
+    #  Note also that cycle I is the XOR combination of cycle III and cycle IV, and 
+    #  thus might not be expected to be involved in an optimal solution.
+    #
+    #  |--------------------------------------------------------------------------------------------------------------------------------------|
+    #  |            | number of |   length of   | total edges | total nodes | unique edges | unique nodes |     edges in    |    nodes in     | 
+    #  | solution # |   cycles  | longest cycle | in solution | in solution | in solution  | in solution  | multiple cycles | multiple cycles | 
+    #  |------------|-----------|---------------|-------------|-------------|--------------|--------------|-----------------|-----------------|
+    #  |     s1     |     2     |      5        |      9      |      9      |      9       |      7       |        0        |     2 in 2      |
+    #  |------------|-----------|---------------|-------------|-------------|--------------|--------------|-----------------|-----------------|
+    #  |     s2     |     3     |      4        |     11      |     11      |      9       |      7       |      1 in 3     |     2 in 3      |
+    #  |------------|-----------|---------------|-------------|-------------|--------------|--------------|-----------------|-----------------|
+    #  |     s3     |     2     |      6        |      9      |      9      |      9       |      7       |        0        |     2 in 2      |
+    #  |--------------------------------------------------------------------------------------------------------------------------------------|
+    #   
+    ##
+    stoich_matrix = np.array(
+    [                                         ## mol ...
+    # rxn ... --->                            ##     |
+    # rxn 0   1   2   3   4   5   6   7   8   ##
+        [-1, -1, 00, 00, 00, 00, 00, 00, 00], ## mol A
+        [+1, 00, -1, -1, -1, 00, 00, 00, 00], ##     B
+        [00, 00, +1, 00, 00, -1, 00, 00, 00], ##     C
+        [00, 00, 00, 00, 00, +1, -1, 00, 00], ##     D
+        [00, 00, 00, +1, 00, 00, +1, -1, -1], ##     E
+        [00, +1, 00, 00, 00, 00, 00, +1, 00], ##     F
+        [00, 00, 00, 00, +1, 00, 00, 00, +1], ##     G
+    ])
 
 
 
@@ -404,13 +481,13 @@ if False:
     # 0 = rxn0 + rxn1 - rxn2
     ##
     stoich_matrix = np.array(
-    [                 ## mol_...
-    # rxn_... --->    ##     |
-    # rxn_0   1   2   ##     |
-        [+1, 00, +1], ## mol_A
-        [-1, 00, -1], ##    _B
-        [00, +1, +1], ##    _C
-        [00, -1, -1], ##    _D
+    [                 ## mol ...
+    # rxn ... --->    ##     |
+    # rxn 0   1   2   ##     |
+        [+1, 00, +1], ## mol A
+        [-1, 00, -1], ##     B
+        [00, +1, +1], ##     C
+        [00, -1, -1], ##     D
     ])
 
 if False:
@@ -423,15 +500,15 @@ if False:
     # 0 = rxn0 - rxn1 - rxn2
     ##
     stoich_matrix = np.array(
-    [                 ## mol_...
-    # rxn_... --->    ##     |
-    # rxn_0   1   2   ##     |
-        [+1, 00, +1], ## mol_A
-        [+1, 00, +1], ##    _B
-        [-1, +1, 00], ##    _C
-        [-1, +1, 00], ##    _D
-        [00, -1, -1], ##    _E
-        [00, -1, -1], ##    _F
+    [                 ## mol ...
+    # rxn ... --->    ##     |
+    # rxn 0   1   2   ##     |
+        [+1, 00, +1], ## mol A
+        [+1, 00, +1], ##     B
+        [-1, +1, 00], ##     C
+        [-1, +1, 00], ##     D
+        [00, -1, -1], ##     E
+        [00, -1, -1], ##     F
     ])
 
 
@@ -439,21 +516,21 @@ if False:
 if False:
     ## what is this?
     stoich_matrix = np.array(
-    [                                         ## mol_...
-    # rxn_... --->                            ##     |
-    # rxn_0   1   2   3   4   5   6   7   8   ##
-        [+1, +1 ,00 ,00, 00, 00, 00, -1, 00], ## mol_A
-        [+1, 00, +2, 00, 00, 00, 00, -1, 00], ##    _B
-        [-1, -1, 00, 00, 00, 00, 00, 00, 00], ##    _C
-        [-1, 00, -2, 00, 00, 00, 00, 00, 00], ##    _D
-        [00, +1, -2, 00, 00, 00, 00, 00, 00], ##    _E
-        [00, -1, +2, 00, 00, 00, 00, 00, 00], ##    _F
-        [00, 00, 00, -1, 00, -1, -1, +1, 00], ##    _G
-        [00, 00, 00, +1, -1, 00, 00, 00, 00], ##    _H
-        [00, 00, 00, +1, -1, 00, 00, 00, 00], ##    _I
-        [00, 00, 00, 00, +1, +1, 00, 00, 00], ##    _J
-        [00, 00, 00, 00, 00, 00, +1, 00, 00], ##    _K
-        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##    _L
+    [                                         ## mol ...
+    # rxn ... --->                            ##     |
+    # rxn 0   1   2   3   4   5   6   7   8   ##
+        [+1, +1 ,00 ,00, 00, 00, 00, -1, 00], ## mol A
+        [+1, 00, +2, 00, 00, 00, 00, -1, 00], ##     B
+        [-1, -1, 00, 00, 00, 00, 00, 00, 00], ##     C
+        [-1, 00, -2, 00, 00, 00, 00, 00, 00], ##     D
+        [00, +1, -2, 00, 00, 00, 00, 00, 00], ##     E
+        [00, -1, +2, 00, 00, 00, 00, 00, 00], ##     F
+        [00, 00, 00, -1, 00, -1, -1, +1, 00], ##     G
+        [00, 00, 00, +1, -1, 00, 00, 00, 00], ##     H
+        [00, 00, 00, +1, -1, 00, 00, 00, 00], ##     I
+        [00, 00, 00, 00, +1, +1, 00, 00, 00], ##     J
+        [00, 00, 00, 00, 00, 00, +1, 00, 00], ##     K
+        [00, 00, 00, 00, 00, 00, 00, 00, 00], ##     L
     ])
 
 
@@ -552,9 +629,10 @@ print(f"The number of linear dependent reactions is: {len(linear_dependent_rxns)
 
 ### reduce matrix so it contains linearly independent columns only
 matrix_complete = stoich_matrix.copy()
-matrix_reduced  = stoich_matrix.copy()[:, [row_idx for row_idx in range(len(collected_rxns)) if not row_idx in linear_dependent_rxn_indices]]
-collected_rxns_reduced = [r for r in collected_rxns if not r in linear_dependent_rxns]
-
+matrix_reduced  = stoich_matrix.copy() #[:, [row_idx for row_idx in range(len(collected_rxns)) if not row_idx in linear_dependent_rxn_indices]]
+collected_rxns_reduced = [r for r in collected_rxns] # if not r in linear_dependent_rxns]
+print(f"collected_rxns_reduced : {collected_rxns_reduced}")
+print("---")
 
 ## alternative to integer Linear Programming: least squares solution:
 # try:
@@ -569,7 +647,7 @@ collected_rxns_reduced = [r for r in collected_rxns if not r in linear_dependent
 import json
 import pulp
 ## these variables allow to spread jobs
-linear_dependent_rxn_indices_to_calculate = linear_dependent_rxn_indices
+linear_dependent_rxn_indices_to_calculate = [x for x in range(len(collected_rxns))] # linear_dependent_rxn_indices
 _filename_extra = ""
 import argparse
 parser = argparse.ArgumentParser()
@@ -585,8 +663,10 @@ output_collector={}
 for solve_for_rxn_id in linear_dependent_rxn_indices_to_calculate:
     print(collected_rxns[solve_for_rxn_id])
 
+    matrix_reduced  = stoich_matrix.copy()[:,[c for c in range(stoich_matrix.shape[1]) if not c == solve_for_rxn_id]]
+    #print(matrix_reduced)
     print("setting up the problem...")
-    rxn_variables  = list([pulp.LpVariable(f"rxn_{rxn_id}", -3, 3, pulp.const.LpInteger) for rxn_id in collected_rxns_reduced])
+    rxn_variables  = list([pulp.LpVariable(f"rxn_{rxn_id}", -3, 3, pulp.const.LpInteger) for rxn_id in collected_rxns_reduced if not rxn_id == collected_rxns[solve_for_rxn_id]])
     prob = pulp.LpProblem(f"solve_for_rxn_{collected_rxns[solve_for_rxn_id]}", pulp.const.LpMinimize)
     for row_idx in range(matrix_reduced.shape[0]):
         constraint_for_row = 0
@@ -594,7 +674,7 @@ for solve_for_rxn_id in linear_dependent_rxn_indices_to_calculate:
             constraint_for_row += value * rxn_variables[column_idx]
         prob += constraint_for_row == matrix_complete[row_idx, solve_for_rxn_id], f"row_{row_idx}"
 
-    ## objective function is actually supposed to be abs(sum(rxn_vars)), but needs workaround
+    ## objective function is actually supposed to be sum(abs(rxn_vars)), but needs workaround
     abs_of_rxn_variables  = list([pulp.LpVariable(f"abs_of_rxn_{rxn_id}") for rxn_id in collected_rxns_reduced]) #, -3, 3, pulp.const.LpInteger
     objective_function = pulp.lpSum( [abs_of_rxn_var for abs_of_rxn_var in abs_of_rxn_variables] ) # if not abs_of_rxn_var is abs_of_rxn_variables[solve_for_rxn_id]] )
     ## workaround formula for abs, by replacing actual variable by dummy and defining constraints of actual<=>dummy:
@@ -604,8 +684,11 @@ for solve_for_rxn_id in linear_dependent_rxn_indices_to_calculate:
     prob += objective_function
     print("...done.")
 
+    #print(prob)
+
     print("Solving the problem...")
-    prob.solve()
+    #prob.solve()
+    prob.solve(pulp.apis.PULP_CBC_CMD(msg=False))
     print("...done.")
 
     print(collected_rxns[solve_for_rxn_id])
