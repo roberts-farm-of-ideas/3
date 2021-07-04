@@ -151,7 +151,7 @@ if False:
 
 ## one-substrate one-product scenarios:
 
-if True:
+if False:
     ## figure a) minimal trivial cycle of length 3
     ##
     #  rxn0 : A = B
@@ -578,6 +578,60 @@ if False:
     #  [0, 0, 0, 0, 1, 0,  0,  0,  1],
     #  [0, 0, 0, 0, 0, 1, -1,  0,  0],
     #  [0, 0, 0, 0, 0, 0,  0,  0,  0]])
+
+
+if False:
+    ## figure i) why are redundant cycles needed?
+    ##
+    #  rxn0 : A = B
+    #  rxn1 : A = C
+    #  rxn2 : A = D
+    #  rxn3 : A = E
+    #  rxn4 : B = F
+    #  rxn5 : C = F
+    #  rxn6 : D = F
+    #  rxn7 : E = F
+    ##
+    #  cycle I:   0 = rxn0 + rxn4 - rxn5 - rxn1  == A-B-F-C-A
+    #  cycle II:  0 = rxn3 + rxn7 - rxn6 - rxn2  == A-E-F-D-A
+    #  cycle III: 0 = rxn1 + rxn5 - rxn6 - rxn2  == A-C-F-D-A
+    #  cycle IV:  0 = rxn0 + rxn4 - rxn7 - rxn3  == A-B-F-E-A
+    #  cycle V:   0 = rxn0 + rxn4 - rxn6 - rxn2  == A-B-F-D-A
+    #  cycle VI:  0 = rxn3 + rxn7 - rxn5 - rxn1  == A-E-F-C-A
+    ##
+    #  solution s1: cycle I  + cycle II  (NB: not really a solution)
+    #  solution s2: cycle I  + cycle II + cycle III
+    #  solution s3: cycle IV + cycle V  + cycle VI
+    ##
+    #  Why is solution s1 not sufficient? It covers the whole figure!
+    #  But: from the cycles of solution s1 it is not possible to construct
+    #  all other possible cycles with XOR operations, e.g. it is not possible
+    #  to construct cycle IV.
+    #  In contrast, with solution s2, which adds a seemingly redundant cycle (cycle III),
+    #  it becomes now possible to construct the others: cycle IV, V, VI, ...
+    ##
+    #  number of nodes (mols) in the figure:     6
+    #  number of edges (rxns) in the figure:     8
+    #  linear dependent reactions of the system: 3
+    ##
+    stoich_matrix = np.array(
+    [                                         ## mol ...
+    # rxn ... --->                            ##     |
+    # rxn 0   1   2   3   4   5   6   7   ##
+        [-1, -1, -1, -1, 00, 00, 00, 00], ## mol A
+        [+1, 00, 00, 00, -1, 00, 00, 00], ##     B
+        [00, +1, 00, 00, 00, -1, 00, 00], ##     C
+        [00, 00, +1, 00, 00, 00, -1, 00], ##     D
+        [00, 00, 00, +1, 00, 00, 00, -1], ##     E
+        [00, 00, 00, 00, +1, +1, +1, +1], ##     F
+    ])
+    # rref = np.array(
+    # [[1, 0, 0, 0, 0,  1,  1,  1],
+    #  [0, 1, 0, 0, 0, -1,  0,  0],
+    #  [0, 0, 1, 0, 0,  0, -1,  0],
+    #  [0, 0, 0, 1, 0,  0,  0, -1],
+    #  [0, 0, 0, 0, 1,  1,  1,  1],
+    #  [0, 0, 0, 0, 0,  0,  0,  0]])
 
 
 
